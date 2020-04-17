@@ -6,19 +6,21 @@ import java.util.Scanner;
  */
 public class Palindrome {
   public static void main(String[] args) {
-    Scanner input = new Scanner(System.in); // Объявляем Scanner
+    Scanner scan = new Scanner(System.in); // Объявляем Scanner
     System.out.println("Введиет количество слов: ");
-    int size = input.nextInt() + 1;
+    int size = scan.nextInt()+1 ;
     String[] s = new String[size]; // Создаём массив s размером в size
     System.out.println("Введите строки:");
     for (int i = 0; i < size; i++) {
-      s[i] = input.nextLine(); // Заполняем массив элементами, введёнными с клавиатуры
+      s[i] = scan.nextLine(); // Заполняем массив элементами, введёнными с клавиатуры
     }
+
+
     for (String i:s) {
       if (isPalindrome(i) == true){
-        System.out.println(i + " является палиндромом");
+        System.out.println("<" + i + ">" + " является палиндромом");
       } else {
-        System.out.println(i + " не является палиндромом");
+        System.out.println("<" + i + ">" + " не является палиндромом");
       }
     }
   }

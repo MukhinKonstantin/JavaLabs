@@ -27,16 +27,16 @@ public class Point3d  extends Point2d{
   public boolean eq(Point3d m) {
     return (xCoord==m.xCoord & yCoord==m.yCoord & zCoord==m.zCoord);
   }
-
+  /** вычисление расстояниие между точками */
   public static double distanceTo(Point3d m, Point3d n) {
     return Math.sqrt(Math.pow((m.xCoord - n.xCoord), 2) + Math.pow((m.yCoord - n.yCoord), 2) + Math.pow((m.zCoord - n.zCoord), 2));
   }
-
+  /** вычисление площади треугольника */
   public static double computeArea(Point3d a,Point3d b, Point3d c){
-    double p1=Point3d.distanceTo(a,b);
-    double p2=Point3d.distanceTo(b,c);
-    double p3=Point3d.distanceTo(a,c);
-    double Pp=(p1+p2+p3)/2;
+    double p1 = Point3d.distanceTo(a,b);
+    double p2 = Point3d.distanceTo(b,c);
+    double p3 = Point3d.distanceTo(a,c);
+    double Pp = (p1+p2+p3)/2;
     return Math.sqrt(Pp*(Pp-p1)*(Pp-p2)*(Pp-p3));
   }
 }

@@ -7,29 +7,33 @@ public class Lab1 {
     Scanner sc = new Scanner(System.in);
     Point3d[] Points = new Point3d[3];
     for (int i=0;i<3;i++){
-      System.out.println("Введите координату точки:");
       while (true) {
-        int k=0;
+        int num = i+1;
+        System.out.println("Введите координату " + num + "-й точки:");
+        int z=0;
         Points[i] = new Point3d();
-        Points[i].setX(sc.nextInt());
-        Points[i].setY(sc.nextInt());
-        Points[i].setZ(sc.nextInt());
+        System.out.print("x: ");
+        Points[i].setX(sc.nextDouble());
+        System.out.print("y: ");
+        Points[i].setY(sc.nextDouble());
+        System.out.print("z: ");
+        Points[i].setZ(sc.nextDouble());
         for (int n=0;n<i;n++){
           if (Points[i].eq(Points[n])){
-            k=1;
+            z=1;
           }
         }
-        if (k==1){
-          System.out.println("Данная точка уже существует.");
-          System.out.println("Введите координату точки:");
+        if (z==1){
+          System.out.println("ОШИБКА (точка уже существует)");
+          System.out.println("ВВЕДИТЕ КООРДИНАТУ ТОЧКИ ПОВТОРНО");
         } else {
           break;
         }
       }
-      System.out.println("Координата точки по " +"х: " + Points[i].getX() + " у: "+ Points[i].getY() + " z: " + Points[i].getZ());
     }
     for (int i=0;i<3;i++) {
-      System.out.println("Координата точки "+ i + " х: " + Points[i].getX() + " у: " + Points[i].getY() + " z: " + Points[i].getZ());
+      int numer = i+1;
+      System.out.println("Координата точки " + numer + ": (" + Points[i].getX() + "; " + Points[i].getY() + "; " + Points[i].getZ() + ")");
     }
     if (Point3d.computeArea(Points[0],Points[1],Points[2])>0){
       System.out.format("Площадь данного треугольнка = %.2f", Point3d.computeArea(Points[0],Points[1],Points[2]));

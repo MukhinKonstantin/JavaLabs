@@ -43,6 +43,9 @@ public class AStarState {
      * with the minimum total cost. If there are no open waypoints, this method
      * returns <code>null</code>.
      **/
+    /** Эта функция проверяет все вершины в наборе открытых вершин,
+     * и после этого возвращает ссылку на вершину с наименьшец общец стоимостью
+     * Если в отекрутом наборе нет вершин, функция возвращает null*/
     public Waypoint getMinOpenWaypoint() {
         float minDistance = Integer.MAX_VALUE;
         Waypoint minWaypoint = null;
@@ -66,9 +69,12 @@ public class AStarState {
      * if</em> the new waypoint's "previous cost" value is less than the current
      * waypoint's "previous cost" value.
      **/
+    // Добавляет вершину, если сущестует вершина хуже новой
     public boolean addOpenWaypoint(Waypoint newWP) {
         for (Map.Entry<Location, Waypoint> entry : HashMapOpen.entrySet()) {
+          // если нет вершины для данного местоположения, то добавляет новую
             if (entry.getKey().equals(newWP.getLocation())) {
+                // заменяет текущую вершину нв новую, если она короче
                 if (entry.getValue().getRemainingCost() > newWP.getRemainingCost()){
                     HashMapOpen.put(newWP.getLocation(), newWP);
                     return true;
@@ -78,6 +84,7 @@ public class AStarState {
             }
         }
         HashMapOpen.put(newWP.getLocation(), newWP);
+        // заменяет предидущую точку на новую
         return true;
     }
 
@@ -85,6 +92,7 @@ public class AStarState {
     /**
      * Returns the current number of open waypoints.
      **/
+    // возвращает количествто точек в наборе открытых вершин
     public int numOpenWaypoints() {
         return HashMapOpen.size();
     }
@@ -94,6 +102,7 @@ public class AStarState {
      * This method moves the waypoint at the specified location from the
      * open list to the closed list.
      **/
+    // перемещает вершину из набора открытых в закрытые 
     public void closeWaypoint(Location loc) {
         Waypoint waypoint = HashMapOpen.get(loc);
         HashMapOpen.remove(loc);
@@ -104,6 +113,8 @@ public class AStarState {
      * Returns true if the collection of closed waypoints contains a waypoint
      * for the specified location.
      **/
+    // возвращает true, если если указанное местоположение встречается
+    // встречается в наборе закрытых вершин
     public boolean isLocationClosed(Location loc) {
         return HashMapClose.containsKey(loc);
     }

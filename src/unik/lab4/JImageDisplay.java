@@ -12,13 +12,13 @@ public class JImageDisplay extends JComponent {
     setPreferredSize(new Dimension(width, height));
   }
 
-  // отрисовка изображения
+  // отрисовка изображения в компоненте
   public void paintComponent (Graphics g){
     g.drawImage (image, 0, 0, image.getWidth(), image.getHeight(), null);
   }
 
   // устонавливает все пиксели изображения в черный цвет
-  public void clearImage() {
+  public void clearImage () {
     for (int x = 0; x < image.getWidth(); x++) {
       for (int y = 0; y < image.getHeight(); y++) {
         image.setRGB(x,y,0);

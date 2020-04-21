@@ -102,7 +102,7 @@ public class AStarState {
      * This method moves the waypoint at the specified location from the
      * open list to the closed list.
      **/
-    // перемещает вершину из набора открытых в закрытые 
+    // перемещает вершину из набора открытых в закрытые
     public void closeWaypoint(Location loc) {
         Waypoint waypoint = HashMapOpen.get(loc);
         HashMapOpen.remove(loc);

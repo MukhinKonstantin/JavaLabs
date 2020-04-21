@@ -6,16 +6,16 @@ import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Kласс FractalExplorer, который позволяет исследовать различные области фрактала,
+ * Kласс FractalExplorer позволяет исследовать различные области фрактала,
  * путем его создания, отображения через графический интерфейс Swing и обработки
  * событий, вызванных взаимодействием приложения с пользователем.
  */
 
 public class FractalExplorer {
-  private int size;
-  private JImageDisplay image;
-  private FractalGenerator fcGen;
-  private Rectangle2D.Double range;
+  private int size; // размер экрана
+  private JImageDisplay image; // для обновления отоброжения в процессе вычисления
+  private FractalGenerator fcGen; // ссылка на базовый класс для отображения других фракталов
+  private Rectangle2D.Double range; // диапазон комплексной плоскости
 
   public FractalExplorer(int size) {
     this.size = size;
@@ -57,7 +57,7 @@ public class FractalExplorer {
     }
     image.repaint();
   }
-  // реализация кнопки
+  // реализация кнопки сброса
   public class ActionHandler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       fcGen.getInitialRange(range);
@@ -79,5 +79,5 @@ public class FractalExplorer {
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
   }
-  public static void main(String[] args) {new FractalExplorer(500);}
+  public static void main(String[] args) {new FractalExplorer(700);}
 }

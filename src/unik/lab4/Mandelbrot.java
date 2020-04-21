@@ -14,7 +14,7 @@ public class Mandelbrot extends FractalGenerator {
     range.width = 3;
     range.height = 3;
   }
-  //  итеративная функцию для фрактала Мандельброта
+  /** реализует итеративную функцию для фрактала Мандельброта*/
   @Override
   public int numIterations(double x, double y) {
     double xn=x;

@@ -16,9 +16,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 
-/**
- * В данном классе добавлена многопоточная реализация
- */
+/** В данном классе добавлена многопоточная реализация */
 
 public class FractalExplorerMod {
   private int size;
@@ -51,12 +49,15 @@ public class FractalExplorerMod {
   }
 
   public void createAndShowGUI() {
-    frame = new JFrame("Fractals");
+    frame = new JFrame("Fractals Explorer");
     image = new JImageDisplay(size, size);
     btnReset = new JButton("Reset");
-    btnSave = new JButton("Save");
-    JLabel label = new JLabel("Fractal: ");
-    box = new JComboBox<>();
+    btnSave = new JButton("Save image");
+    //btnReset.setActionCommand("Reset");
+    //btnSave.setActionCommand("Save image");
+    JLabel label = new JLabel("Fractal: ");// добавление подписи
+    box = new JComboBox<>();// сoздание выпадающего списка
+    //box.setActionCommand("box");
     box.addItem(new Mandelbrot());
     box.addItem(new Tricorn());
     box.addItem(new BurningShip());
@@ -109,14 +110,14 @@ public class FractalExplorerMod {
         fcGen.getInitialRange(range);
         drawFractal();
       } else if (e.getSource() == btnSave) {
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();// файл изображения в png
         FileFilter filter = new FileNameExtensionFilter("PNG Images", "PNG");
         chooser.setFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(false);
         if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-          try {
+          try { // агрузка и сохранение изображения
             ImageIO.write(image.getBufferedImage(), "png", new File(chooser.getSelectedFile() + ".PNG"));
-          } catch (IOException ex) {
+          } catch (IOException ex) { // информация об ошибке
             System.out.println("Failed to save image!");
           }
         } else {
